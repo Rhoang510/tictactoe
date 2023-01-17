@@ -16,12 +16,29 @@ body {
     justify-content: center;
     align-items: center;
     height: 200px;
-    /* border: 1px solid red; */
 }
 
 .header h1 {
+    font-family: 'Lobster', cursive;
     text-align: center;
-    font-size: clamp(3.5rem, 7vw, 5rem);
+    font-size: clamp(4rem, 15vw, 10rem);
+    color: rgb(87, 165, 117);
+}
+
+.message {
+    font-family: 'PT Sans Narrow', sans-serif;
+    font-size: clamp(1.5rem, 3.5vw, 3rem);
+}
+
+.form {
+    display: flex;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.form > input {
+    height: 20px;
+    width: 140px;
 }
 
 .container {
@@ -29,12 +46,10 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* border: 1px solid red; */
 }
 
 .square-container {
     padding-top: 50px;
-    /* border: 1px solid red; */
 }
 
 .gameboard {
@@ -54,8 +69,10 @@ body {
     border-top: none;
     height: 100px;
     width: 100px;
-    font-size: clamp(3rem, 10vw, 6rem);
+    font-size: clamp(4rem, 10vw, 7rem);
+    font-weight: 700;
     cursor: pointer;
+    transform: 1s ease-in-out;
 }
 
 .square:hover {
@@ -70,17 +87,93 @@ body {
     border-bottom: none;
 }
 
+.modal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transform: scale(1.1);
+    transition: 0.5s ease-in-out;
+    visibility: hidden;
+}
+
+.gameover {
+    background-color: rgb(59, 141, 90);
+    width: 350px;
+    height: 200px;
+    border-radius: 30px;
+    border: 1px solid black;
+}
+
+.reset-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    color: black;
+    margin-top: 30px;
+    height: 50px;
+    width: 140px;
+    font-size: 2rem;
+    border-radius: 20px;
+    border: 2px solid black;
+    cursor: pointer;
+}
+
+.reset-btn:hover {
+    opacity: 80%;
+}
+
+.display {
+    color: white;
+    font-size: 1.75rem;
+}
+
 @media (min-width: 600px) {
     .square {
         height: 150px;
         width: 150px;
     }
-}
 
+    .form > input {
+        height: 25px;
+        width: 180px;
+    }
+}
 
 @media (min-width: 900px) {
     .square {
         height: 180px;
         width: 180px;
     }
+
+    .form > input {
+        height: 30px;
+        width: 200px;
+    }
 }
+
+/* @keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fade-out {
+    100% {
+        opacity: 0;
+    }
+    0% {
+        opacity: 1;
+    }
+} */
