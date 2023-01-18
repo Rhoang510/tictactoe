@@ -5,8 +5,8 @@ const Gameboard = (() => {
     let board = new Array(9).fill('')
     const getBoard = () => board
     const getValue = (index) => board[index]
-    const setValue = (index, marker) => { board[index] = marker, console.log(board) }
-    const resetBoard = () => { board.fill(''), console.log(board) }
+    const setValue = (index, marker) => board[index] = marker
+    const resetBoard = () => board.fill('')
     return {
         getBoard,
         setValue,
@@ -39,18 +39,18 @@ const gameFlow = (player1Name, player2Name) => {
     const checkForWin = (player) => {
         const draw = gameboard.getBoard().every(square => square != '')
         const winner = winConditions
-        .find(winCondition => winCondition
+            .find(winCondition => winCondition
             .every(index => gameboard.getBoard()[index] === player.getMarker()))
 
         if (winner != null) {
+            gameover = true
             displayController.openModal()
             displayController.displayWinner(currentPlayer)
-            gameover = true
             resetGameModal()
-        } if (winner != null && draw) {
+        } if (winner == null && draw) {
+            gameover = true
             displayController.openModal()
             displayController.displayDraw()
-            gameover = true
             resetGameModal()
         }
     }

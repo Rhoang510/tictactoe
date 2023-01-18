@@ -15,19 +15,21 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 200px;
+    margin-top: 30px;
 }
 
 .header h1 {
     font-family: 'Lobster', cursive;
     text-align: center;
-    font-size: clamp(4rem, 15vw, 10rem);
-    color: rgb(87, 165, 117);
+    font-size: clamp(4.5rem, 15vw, 10rem);
+    color:rgb(40, 134, 223);
+    /* border: 1px solid red; */
 }
 
 .message {
     font-family: 'PT Sans Narrow', sans-serif;
     font-size: clamp(1.5rem, 3.5vw, 3rem);
+    margin-top: 20px;
 }
 
 .form {
@@ -69,7 +71,7 @@ body {
     border-top: none;
     height: 100px;
     width: 100px;
-    font-size: clamp(4rem, 10vw, 7rem);
+    font-size: clamp(4rem, 12vw, 10rem);
     font-weight: 700;
     cursor: pointer;
     transform: 1s ease-in-out;
@@ -105,8 +107,8 @@ body {
 }
 
 .gameover {
-    background-color: rgb(59, 141, 90);
-    width: 350px;
+    background-color: rgb(30, 102, 170);
+    width: 400px;
     height: 200px;
     border-radius: 30px;
     border: 1px solid black;
@@ -121,7 +123,7 @@ body {
     margin-top: 30px;
     height: 50px;
     width: 140px;
-    font-size: 2rem;
+    font-size: 1.75rem;
     border-radius: 20px;
     border: 2px solid black;
     cursor: pointer;
@@ -133,7 +135,7 @@ body {
 
 .display {
     color: white;
-    font-size: 1.75rem;
+    font-size: 2rem;
 }
 
 @media (min-width: 600px) {
