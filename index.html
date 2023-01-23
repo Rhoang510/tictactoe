@@ -19,10 +19,17 @@
             <h1>Tic-tac-toe</h1>
         </div>
         <div class="message"></div>
-        <div class="form">
-            <input type="text" class="player1" maxlength="20" placeholder="Player 1">
-            <input type="text" class="player2" maxlength="20" placeholder="Player 2">
-        </div>
+        <button class="changeNames">Change Name</button>
+    </div>
+    <div class="playerModal">
+        <div class="playerMessage">
+            <h1>Please enter name</h1>
+            <form class="form">
+                <input type="text" class="player1" maxlength="16" placeholder="Player 1" required>
+                <input type="text" class="player2" maxlength="16" placeholder="Player 2" required>
+                <input type="submit" class="submit-btn">
+            </div>
+        </form>
     </div>
     <div class="container square-container">
         <div class="gameboard">

@@ -1,6 +1,3 @@
-const player1Name = document.querySelector('.player1')
-const player2Name = document.querySelector('.player2')
-
 const Gameboard = (() => {
     let board = new Array(9).fill('')
     const getBoard = () => board
@@ -24,6 +21,7 @@ const Player = (name, marker) => {
 const gameFlow = (player1Name, player2Name) => {
     const square = document.querySelectorAll('.square')
     const resetBtn = document.querySelector('.reset-btn')
+    const changeName = document.querySelector('.changeNames')
     let gameboard = Gameboard
     let player1 = Player(player1Name, 'X')
     let player2 = Player(player2Name, 'O')
@@ -35,7 +33,7 @@ const gameFlow = (player1Name, player2Name) => {
     const switchPlayers = () => {
         currentPlayer = currentPlayer === player1 ? player2 : player1
     }
-
+    
     const checkForWin = (player) => {
         const draw = gameboard.getBoard().every(square => square != '')
         const winner = winConditions
@@ -106,6 +104,13 @@ const gameFlow = (player1Name, player2Name) => {
         })
     }
 
+    const changePlayersName = (() => {
+        changeName.addEventListener('click', () => {
+            displayController.openPlayerModal()
+            // resetGame()
+        })
+    })()
+
     return {
         switchPlayers,
         currentPlayer,
@@ -120,7 +125,8 @@ const displayController = (() => {
     const message = document.querySelector('.message')
     const display = document.querySelector('.display')
     const modal = document.querySelector('.modal')
-
+    const playerModal = document.querySelector('.playerModal')
+    
     const renderBoard = () => {
         for(let i = 0; i < 9; i++) {
             square[i].textContent = Gameboard.getValue(i)
@@ -128,7 +134,7 @@ const displayController = (() => {
     }
     
     const whosTurn = (player) => {
-        message.textContent = `It's ${player.getName()}'s turn`
+        message.textContent = `It's ${player.getName()}'s turn (${player.getMarker()})`
     }
 
     const displayWinner = (player) => {
@@ -149,14 +155,44 @@ const displayController = (() => {
         modal.style.visibility = 'hidden'
     }
 
+    const openPlayerModal = () => {
+        playerModal.style.opacity = '1'
+        playerModal.style.visibility = 'visible'
+    }
+
+    const closePlayerModal = () => {
+        playerModal.style.opacity = '0'
+        playerModal.style.visibility = 'hidden'
+    }
+
     return {
         renderBoard,
         whosTurn,
         displayWinner,
         displayDraw,
         openModal,
-        closeModal
+        closeModal,
+        openPlayerModal,
+        closePlayerModal
     }
 })()
 
-gameFlow('Player 1', 'Player 2')
+const startGame = (() => {
+    const submitBtn = document.querySelector('.submit-btn')
+    const player1Name = document.querySelector('.player1')
+    const player2Name = document.querySelector('.player2')
+
+    submitBtn.addEventListener('click', (e) => {
+        let player1 = player1Name.value
+        let player2 = player2Name.value
+        if (player1 === '' || player2 === '') {
+            return
+        } else {
+            e.preventDefault()
+            displayController.closePlayerModal()
+            gameFlow(player1, player2)
+            player1Name.value = ''
+            player2Name.value = ''
+        }
+    })
+})()

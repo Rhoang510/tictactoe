@@ -7,7 +7,7 @@
 
 body {
     min-height: 100%;
-    background-color: #333;
+    background-color: #232323;
     color: white;
 }
 
@@ -22,8 +22,7 @@ body {
     font-family: 'Lobster', cursive;
     text-align: center;
     font-size: clamp(4.5rem, 15vw, 10rem);
-    color:rgb(40, 134, 223);
-    /* border: 1px solid red; */
+    color:rgb(29, 115, 196);
 }
 
 .message {
@@ -32,15 +31,65 @@ body {
     margin-top: 20px;
 }
 
+.changeNames {
+    text-align: center;
+    margin-top: 20px;
+    width: 120px;
+    height: 35px;
+    font-size: 1rem;
+    background-color: rgb(25, 75, 122);
+    color: #fff;
+    border: 1px dotted white;
+}
+
+.changeNames:hover {
+    opacity: 80%;
+}
+
+.playerModal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 1;
+    transform: scale(1.1);
+    transition: 0.5s ease-in-out;
+    visibility: visible;
+}
+
+.playerMessage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgb(17, 67, 114);
+    padding: 30px;
+    border-radius: 10px;
+}
+
 .form {
     display: flex;
-    gap: 20px;
+    flex-direction: column;
+    gap: 5px;
     margin-top: 30px;
 }
 
-.form > input {
-    height: 20px;
-    width: 140px;
+.form > input[type=text] {
+    height: 30px;
+    width: 200px;
+    background-color: #232323;
+    color: #fff;
+}
+
+.form > input[type=submit] {
+    height: 30px;
+    width: 200px;
 }
 
 .container {
@@ -58,15 +107,14 @@ body {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     margin: 0 auto;
-    border: 3px solid rgb(40, 134, 223)
 }
 
 .square {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: rgb(44, 44, 44);
-    border: 1px solid rgb(40, 134, 223);
+    background: rgb(25, 90, 151);
+    border: 5px solid #232323;
     border-right: none;
     border-top: none;
     height: 100px;
@@ -74,11 +122,11 @@ body {
     font-size: clamp(4rem, 12vw, 10rem);
     font-weight: 700;
     cursor: pointer;
-    transform: 1s ease-in-out;
+    /* transform: 1s ease-in-out; */
 }
 
 .square:hover {
-    background-color: #333;
+    opacity: 80%;
 }
 
 .no-l {
@@ -107,9 +155,9 @@ body {
 }
 
 .gameover {
-    background-color: rgb(30, 102, 170);
-    width: 400px;
-    height: 200px;
+    background-color: rgb(25, 73, 117);
+    width: 350px;
+    height: 180px;
     border-radius: 30px;
     border: 1px solid black;
 }
@@ -123,7 +171,7 @@ body {
     margin-top: 30px;
     height: 50px;
     width: 140px;
-    font-size: 1.75rem;
+    font-size: clamp(1.5rem, 3.5vw, 1.75rem);
     border-radius: 20px;
     border: 2px solid black;
     cursor: pointer;
@@ -135,7 +183,8 @@ body {
 
 .display {
     color: white;
-    font-size: 2rem;
+    text-align: center;
+    font-size: clamp(1.5rem, 4vw, 2.25rem);
 }
 
 @media (min-width: 600px) {
@@ -147,6 +196,11 @@ body {
     .form > input {
         height: 25px;
         width: 180px;
+    }
+
+    .gameover {
+        width: 400px;
+        height: 210px;
     }
 }
 
@@ -160,22 +214,9 @@ body {
         height: 30px;
         width: 200px;
     }
-}
 
-/* @keyframes fade-in {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
+    .gameover {
+        width: 450px;
+        height: 225px;
     }
 }
-
-@keyframes fade-out {
-    100% {
-        opacity: 0;
-    }
-    0% {
-        opacity: 1;
-    }
-} */
