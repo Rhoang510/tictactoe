@@ -25,27 +25,6 @@ body {
     color:rgb(29, 115, 196);
 }
 
-.message {
-    font-family: 'PT Sans Narrow', sans-serif;
-    font-size: clamp(1.5rem, 3.5vw, 3rem);
-    margin-top: 20px;
-}
-
-.changeNames {
-    text-align: center;
-    margin-top: 20px;
-    width: 120px;
-    height: 35px;
-    font-size: 1rem;
-    background-color: rgb(25, 75, 122);
-    color: #fff;
-    border: 1px dotted white;
-}
-
-.changeNames:hover {
-    opacity: 80%;
-}
-
 .playerModal {
     display: flex;
     flex-direction: column;
@@ -71,6 +50,33 @@ body {
     background: rgb(17, 67, 114);
     padding: 30px;
     border-radius: 10px;
+}
+
+.scoreboard {
+    display: flex;
+    gap: 50px;
+    margin-top: 10px;
+}
+
+.scoreboard > div {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: clamp(1.3rem, 3vw, 2rem);
+}
+
+.player1Turn,
+.player2Turn {
+    transition: 0.5s ease-in-out;
+}
+
+.p1Name,
+.p2Name {
+    border-bottom: 1px solid white;
+}
+
+.p1Score,
+.p2Score {
+    font-size: 3rem;
 }
 
 .form {
@@ -100,7 +106,7 @@ body {
 }
 
 .square-container {
-    padding-top: 50px;
+    padding-top: 30px;
 }
 
 .gameboard {
@@ -113,20 +119,26 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 10px;
     background: rgb(25, 90, 151);
     border: 5px solid #232323;
     border-right: none;
     border-top: none;
     height: 100px;
     width: 100px;
-    font-size: clamp(4rem, 12vw, 10rem);
-    font-weight: 700;
+    border-radius: 30px;
+    font-size: clamp(4rem, 9vw, 7rem);
+    font-weight: 400;
     cursor: pointer;
-    /* transform: 1s ease-in-out; */
 }
 
 .square:hover {
     opacity: 80%;
+}
+
+.square:active {
+    transform: scale(1.1);
+    transition: 0.2s;
 }
 
 .no-l {
@@ -135,6 +147,21 @@ body {
 
 .no-b {
     border-bottom: none;
+}
+
+.changeNames {
+    text-align: center;
+    margin-top: 30px;
+    width: 120px;
+    height: 35px;
+    font-size: 1rem;
+    background-color: rgb(10, 59, 104);
+    color: #fff;
+    border: 1px dotted white;
+}
+
+.changeNames:hover {
+    opacity: 80%;
 }
 
 .modal {
@@ -156,8 +183,9 @@ body {
 
 .gameover {
     background-color: rgb(25, 73, 117);
-    width: 350px;
-    height: 180px;
+    /* background-color: rgb(149, 72, 168); */
+    width: 320px;
+    height: 160px;
     border-radius: 30px;
     border: 1px solid black;
 }
@@ -184,13 +212,13 @@ body {
 .display {
     color: white;
     text-align: center;
-    font-size: clamp(1.5rem, 4vw, 2.25rem);
+    font-size: clamp(1.5rem, 4vw, 3rem);
 }
 
 @media (min-width: 600px) {
     .square {
-        height: 150px;
-        width: 150px;
+        height: 115px;
+        width: 115px;
     }
 
     .form > input {
@@ -202,12 +230,16 @@ body {
         width: 400px;
         height: 210px;
     }
+
+    .scoreboard {
+        gap: 100px;
+    }
 }
 
 @media (min-width: 900px) {
     .square {
-        height: 180px;
-        width: 180px;
+        height: 135px;
+        width: 135px;
     }
 
     .form > input {
@@ -218,5 +250,9 @@ body {
     .gameover {
         width: 450px;
         height: 225px;
+    }
+    
+    .scoreboard {
+        gap: 150px;
     }
 }

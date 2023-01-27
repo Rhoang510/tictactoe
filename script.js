@@ -4,18 +4,16 @@ const Gameboard = (() => {
     const getValue = (index) => board[index]
     const setValue = (index, marker) => board[index] = marker
     const resetBoard = () => board.fill('')
-    return {
-        getBoard,
-        setValue,
-        resetBoard,
-        getValue
-    }
+    return { getBoard, setValue, resetBoard, getValue }
 })()
 
 const Player = (name, marker) => {
+    let score = 0
     const getName = () => name
     const getMarker = () => marker
-    return { getName, getMarker }
+    const getScore = () => score
+    const winner = () => ++score
+    return { getName, getMarker, getScore, winner }
 }
 
 const gameFlow = (player1Name, player2Name) => {
@@ -28,10 +26,18 @@ const gameFlow = (player1Name, player2Name) => {
     let currentPlayer = player1
     let gameover = false
 
-    displayController.whosTurn(currentPlayer)
+    
     
     const switchPlayers = () => {
         currentPlayer = currentPlayer === player1 ? player2 : player1
+    }
+
+    const alertPlayerTurn = () => {
+        if (currentPlayer == player1) {
+            displayController.alertPlayer1turn()
+        } else {
+            displayController.alertPlayer2turn()
+        }
     }
     
     const checkForWin = (player) => {
@@ -44,6 +50,7 @@ const gameFlow = (player1Name, player2Name) => {
             gameover = true
             displayController.openModal()
             displayController.displayWinner(currentPlayer)
+            addWinTotal(currentPlayer)
             resetGameModal()
         } if (winner == null && draw) {
             gameover = true
@@ -51,6 +58,13 @@ const gameFlow = (player1Name, player2Name) => {
             displayController.displayDraw()
             resetGameModal()
         }
+    }
+
+    const addWinTotal = (player) => {
+        player.winner()
+        currentPlayer = currentPlayer === player1 ?
+            displayController.updatePlayer1Score(currentPlayer) :
+            displayController.updatePlayer2Score(currentPlayer)
     }
 
     const winConditions = [
@@ -73,7 +87,8 @@ const gameFlow = (player1Name, player2Name) => {
                 checkForWin(currentPlayer)
                 switchPlayers()
             } if (square.textContent != '' && gameover === false) {
-                displayController.whosTurn(currentPlayer)
+                // displayController.whosTurn(currentPlayer)
+                alertPlayerTurn()
             }
         })
     })
@@ -83,7 +98,8 @@ const gameFlow = (player1Name, player2Name) => {
         displayController.closeModal()
         currentPlayer = player1
         gameover = false
-        displayController.whosTurn(currentPlayer)
+        alertPlayerTurn()
+        // displayController.whosTurn(currentPlayer)
         square.forEach(square => {
             square.textContent = ''
         })
@@ -104,10 +120,16 @@ const gameFlow = (player1Name, player2Name) => {
         })
     }
 
+    const renderDisplay = (() => {
+        displayController.displayPlayer1Name(player1)
+        displayController.displayPlayer2Name(player2)
+        // displayController.whosTurn(currentPlayer)
+        alertPlayerTurn()
+    })()
+
     const changePlayersName = (() => {
         changeName.addEventListener('click', () => {
-            displayController.openPlayerModal()
-            // resetGame()
+            location.reload()
         })
     })()
 
@@ -122,23 +144,60 @@ const gameFlow = (player1Name, player2Name) => {
 
 const displayController = (() => {
     const square = document.querySelectorAll('.square')
-    const message = document.querySelector('.message')
+    // const message = document.querySelector('.message')
     const display = document.querySelector('.display')
     const modal = document.querySelector('.modal')
     const playerModal = document.querySelector('.playerModal')
+    const p1Name = document.querySelector('.p1Name')
+    const p1Score = document.querySelector('.p1Score')
+    const p2Name = document.querySelector('.p2Name')
+    const p2Score = document.querySelector('.p2Score')
+    const player1Turn = document.querySelector('.player1Turn')
+    const player2Turn = document.querySelector('.player2Turn')
     
     const renderBoard = () => {
         for(let i = 0; i < 9; i++) {
             square[i].textContent = Gameboard.getValue(i)
         }
     }
+
+    const displayPlayer1Name = (player) => {
+        p1Name.textContent = player.getName() 
+    }
+
+    const displayPlayer2Name = (player) => {
+        p2Name.textContent = player.getName()
+    }
     
+    const updatePlayer1Score = (player) => {
+        p1Score.textContent = player.getScore()
+    }
+
+    const updatePlayer2Score = (player) => {
+        p2Score.textContent = player.getScore()
+    }
+
+    const alertPlayer1turn = () => {
+        player1Turn.style.scale = '1.1'
+        player2Turn.style.scale = '0.9'
+        player1Turn.style.color = 'rgb(149, 72, 168)'
+        player2Turn.style.color = '#fff'
+    }
+
+    const alertPlayer2turn = () => {
+        player1Turn.style.scale = '0.9'
+        player2Turn.style.scale = '1.1'
+        player1Turn.style.color = '#fff'
+        player2Turn.style.color = 'rgb(149, 72, 168)'
+
+    }
+
     const whosTurn = (player) => {
-        message.textContent = `It's ${player.getName()}'s turn (${player.getMarker()})`
+        message.textContent = `It's ${player.getName().toUpperCase()}'s turn (${player.getMarker()})`
     }
 
     const displayWinner = (player) => {
-        display.textContent = `${player.getName()} has won!`
+        display.textContent = `${player.getName().toUpperCase()} has won!`
     }
 
     const displayDraw = () => {
@@ -167,13 +226,19 @@ const displayController = (() => {
 
     return {
         renderBoard,
-        whosTurn,
+        // whosTurn,
         displayWinner,
         displayDraw,
         openModal,
         closeModal,
         openPlayerModal,
-        closePlayerModal
+        closePlayerModal,
+        displayPlayer1Name,
+        displayPlayer2Name,
+        updatePlayer1Score,
+        updatePlayer2Score,
+        alertPlayer1turn,
+        alertPlayer2turn
     }
 })()
 
@@ -191,8 +256,6 @@ const startGame = (() => {
             e.preventDefault()
             displayController.closePlayerModal()
             gameFlow(player1, player2)
-            player1Name.value = ''
-            player2Name.value = ''
         }
     })
 })()

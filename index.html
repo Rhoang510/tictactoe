@@ -10,6 +10,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=PT+Sans+Narrow&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
     <link rel="stylesheet" href="style.css">
     <script defer src="script.js"></script>
 </head>
@@ -18,15 +20,23 @@
         <div class="header">
             <h1>Tic-tac-toe</h1>
         </div>
-        <div class="message"></div>
-        <button class="changeNames">Change Name</button>
+        <div class="scoreboard">
+            <div class="player1Score player1Turn">
+                <h3 class="p1Name">Player 1</h3>
+                <h2 class="p1Score">0</h2>
+            </div>
+            <div class="player2Score player2Turn">
+                <h3 class="p2Name">Player 2</h3>
+                <h2 class="p2Score">0</h2>
+            </div>
+        </div>
     </div>
     <div class="playerModal">
         <div class="playerMessage">
             <h1>Please enter name</h1>
             <form class="form">
-                <input type="text" class="player1" maxlength="16" placeholder="Player 1" required>
-                <input type="text" class="player2" maxlength="16" placeholder="Player 2" required>
+                <input type="text" class="player1" maxlength="12" placeholder="Player 1" required>
+                <input type="text" class="player2" maxlength="12" placeholder="Player 2" required>
                 <input type="submit" class="submit-btn">
             </div>
         </form>
@@ -43,6 +53,9 @@
             <div class="square no-b" data-index="7"></div>
             <div class="square no-b" data-index="8"></div>
         </div>
+    </div>
+    <div class="container">
+        <button class="changeNames">Change Name</button>
     </div>
     <div class="modal">
         <div class="container gameover">
