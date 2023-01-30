@@ -21,7 +21,7 @@ body {
 .header h1 {
     font-family: 'Lobster', cursive;
     text-align: center;
-    font-size: clamp(4.5rem, 15vw, 10rem);
+    font-size: clamp(5rem, 15vw, 10rem);
     color:rgb(29, 115, 196);
 }
 
@@ -182,10 +182,9 @@ body {
 }
 
 .gameover {
-    background-color: rgb(25, 73, 117);
-    /* background-color: rgb(149, 72, 168); */
-    width: 320px;
-    height: 160px;
+    background-color: rgb(10, 59, 104);
+    width: 350px;
+    height: 150px;
     border-radius: 30px;
     border: 1px solid black;
 }
@@ -197,10 +196,10 @@ body {
     background-color: white;
     color: black;
     margin-top: 30px;
-    height: 50px;
-    width: 140px;
-    font-size: clamp(1.5rem, 3.5vw, 1.75rem);
-    border-radius: 20px;
+    height: 35px;
+    width: 120px;
+    font-size: clamp(1.25rem, 3vw, 1.75rem);
+    border-radius: 10px;
     border: 2px solid black;
     cursor: pointer;
 }
@@ -212,7 +211,7 @@ body {
 .display {
     color: white;
     text-align: center;
-    font-size: clamp(1.5rem, 4vw, 3rem);
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
 }
 
 @media (min-width: 600px) {
@@ -227,8 +226,13 @@ body {
     }
 
     .gameover {
-        width: 400px;
-        height: 210px;
+        width: 350px;
+        height: 175px;
+    }
+
+    .reset-btn {
+        width: 130px;
+        height: 40px;
     }
 
     .scoreboard {
@@ -249,7 +253,12 @@ body {
 
     .gameover {
         width: 450px;
-        height: 225px;
+        height: 210px;
+    }
+
+    .reset-btn {
+        width: 140px;
+        height: 45px;
     }
     
     .scoreboard {

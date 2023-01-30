@@ -25,19 +25,15 @@ const gameFlow = (player1Name, player2Name) => {
     let player2 = Player(player2Name, 'O')
     let currentPlayer = player1
     let gameover = false
-
-    
     
     const switchPlayers = () => {
         currentPlayer = currentPlayer === player1 ? player2 : player1
     }
 
     const alertPlayerTurn = () => {
-        if (currentPlayer == player1) {
-            displayController.alertPlayer1turn()
-        } else {
+        currentPlayer === player1 ?
+            displayController.alertPlayer1turn() :
             displayController.alertPlayer2turn()
-        }
     }
     
     const checkForWin = (player) => {
@@ -87,7 +83,6 @@ const gameFlow = (player1Name, player2Name) => {
                 checkForWin(currentPlayer)
                 switchPlayers()
             } if (square.textContent != '' && gameover === false) {
-                // displayController.whosTurn(currentPlayer)
                 alertPlayerTurn()
             }
         })
@@ -99,7 +94,6 @@ const gameFlow = (player1Name, player2Name) => {
         currentPlayer = player1
         gameover = false
         alertPlayerTurn()
-        // displayController.whosTurn(currentPlayer)
         square.forEach(square => {
             square.textContent = ''
         })
@@ -123,7 +117,6 @@ const gameFlow = (player1Name, player2Name) => {
     const renderDisplay = (() => {
         displayController.displayPlayer1Name(player1)
         displayController.displayPlayer2Name(player2)
-        // displayController.whosTurn(currentPlayer)
         alertPlayerTurn()
     })()
 
@@ -144,7 +137,6 @@ const gameFlow = (player1Name, player2Name) => {
 
 const displayController = (() => {
     const square = document.querySelectorAll('.square')
-    // const message = document.querySelector('.message')
     const display = document.querySelector('.display')
     const modal = document.querySelector('.modal')
     const playerModal = document.querySelector('.playerModal')
@@ -192,10 +184,6 @@ const displayController = (() => {
 
     }
 
-    const whosTurn = (player) => {
-        message.textContent = `It's ${player.getName().toUpperCase()}'s turn (${player.getMarker()})`
-    }
-
     const displayWinner = (player) => {
         display.textContent = `${player.getName().toUpperCase()} has won!`
     }
@@ -226,7 +214,6 @@ const displayController = (() => {
 
     return {
         renderBoard,
-        // whosTurn,
         displayWinner,
         displayDraw,
         openModal,
