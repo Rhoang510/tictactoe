@@ -1,267 +1,278 @@
 * {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    "Open Sans",
+    "Helvetica Neue",
+    sans-serif;
 }
 
 body {
-    min-height: 100%;
-    background-color: #232323;
-    color: white;
+  min-height: 100%;
+  background-color: #232323;
+  color: white;
 }
 
 .container .header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
 }
 
 .header h1 {
-    font-family: 'Lobster', cursive;
-    text-align: center;
-    font-size: clamp(5rem, 15vw, 10rem);
-    color:rgb(29, 115, 196);
+  font-family: "Lobster", cursive;
+  text-align: center;
+  font-size: clamp(5rem, 15vw, 10rem);
+  color: rgb(29, 115, 196);
 }
 
 .playerModal {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    opacity: 1;
-    transform: scale(1.1);
-    transition: 0.5s ease-in-out;
-    visibility: visible;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 1;
+  transform: scale(1.1);
+  transition: 0.5s ease-in-out;
+  visibility: visible;
 }
 
 .playerMessage {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: rgb(17, 67, 114);
-    padding: 30px;
-    border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgb(17, 67, 114);
+  padding: 30px;
+  border-radius: 10px;
 }
 
 .scoreboard {
-    display: flex;
-    gap: 50px;
-    margin-top: 10px;
+  display: flex;
+  gap: 50px;
+  margin-top: 10px;
 }
 
 .scoreboard > div {
-    text-align: center;
-    text-transform: uppercase;
-    font-size: clamp(1.3rem, 3vw, 2rem);
+  text-align: center;
+  text-transform: uppercase;
+  font-size: clamp(1.3rem, 3vw, 2rem);
 }
 
 .player1Turn,
 .player2Turn {
-    transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
 }
 
 .p1Name,
 .p2Name {
-    border-bottom: 1px solid white;
+  border-bottom: 1px solid white;
 }
 
 .p1Score,
 .p2Score {
-    font-size: 3rem;
+  font-size: 3rem;
 }
 
 .form {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 30px;
 }
 
-.form > input[type=text] {
-    height: 30px;
-    width: 200px;
-    background-color: #232323;
-    color: #fff;
+.form > input[type="text"] {
+  height: 30px;
+  width: 200px;
+  background-color: #232323;
+  color: #fff;
 }
 
-.form > input[type=submit] {
-    height: 30px;
-    width: 200px;
+.form > input[type="submit"] {
+  height: 30px;
+  width: 200px;
 }
 
 .container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .square-container {
-    padding-top: 30px;
+  padding-top: 30px;
 }
 
 .gameboard {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 0 auto;
 }
 
 .square {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    background: rgb(25, 90, 151);
-    border: 5px solid #232323;
-    border-right: none;
-    border-top: none;
-    height: 100px;
-    width: 100px;
-    border-radius: 30px;
-    font-size: clamp(4rem, 9vw, 7rem);
-    font-weight: 400;
-    cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  background: rgb(25, 90, 151);
+  border: 5px solid #232323;
+  border-right: none;
+  border-top: none;
+  height: 100px;
+  width: 100px;
+  border-radius: 30px;
+  font-size: clamp(4rem, 9vw, 7rem);
+  font-weight: 400;
+  cursor: pointer;
 }
 
 .square:hover {
-    opacity: 80%;
+  opacity: 80%;
 }
 
 .square:active {
-    transform: scale(1.1);
-    transition: 0.2s;
+  transform: scale(1.1);
+  transition: 0.2s;
 }
 
 .no-l {
-    border-left: none;
+  border-left: none;
 }
 
 .no-b {
-    border-bottom: none;
+  border-bottom: none;
 }
 
 .changeNames {
-    text-align: center;
-    margin-top: 30px;
-    width: 120px;
-    height: 35px;
-    font-size: 1rem;
-    background-color: rgb(10, 59, 104);
-    color: #fff;
-    border: 1px dotted white;
+  text-align: center;
+  margin-top: 30px;
+  width: 120px;
+  height: 35px;
+  font-size: 1rem;
+  background-color: rgb(10, 59, 104);
+  color: #fff;
+  border: 1px dotted white;
 }
 
 .changeNames:hover {
-    opacity: 80%;
+  opacity: 80%;
 }
 
 .modal {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    opacity: 0;
-    transform: scale(1.1);
-    transition: 0.5s ease-in-out;
-    visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transform: scale(1.1);
+  transition: 0.5s ease-in-out;
+  visibility: hidden;
 }
 
 .gameover {
-    background-color: rgb(10, 59, 104);
-    width: 350px;
-    height: 150px;
-    border-radius: 30px;
-    border: 1px solid black;
+  background-color: rgb(10, 59, 104);
+  width: 350px;
+  height: 150px;
+  border-radius: 30px;
+  border: 1px solid black;
 }
 
 .reset-btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: white;
-    color: black;
-    margin-top: 30px;
-    height: 35px;
-    width: 120px;
-    font-size: clamp(1.25rem, 3vw, 1.75rem);
-    border-radius: 10px;
-    border: 2px solid black;
-    cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  color: black;
+  margin-top: 30px;
+  height: 35px;
+  width: 120px;
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
+  border-radius: 10px;
+  border: 2px solid black;
+  cursor: pointer;
 }
 
 .reset-btn:hover {
-    opacity: 80%;
+  opacity: 80%;
 }
 
 .display {
-    color: white;
-    text-align: center;
-    font-size: clamp(1.5rem, 4vw, 2.5rem);
+  color: white;
+  text-align: center;
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
 }
 
 @media (min-width: 600px) {
-    .square {
-        height: 115px;
-        width: 115px;
-    }
+  .square {
+    height: 115px;
+    width: 115px;
+  }
 
-    .form > input {
-        height: 25px;
-        width: 180px;
-    }
+  .form > input {
+    height: 25px;
+    width: 180px;
+  }
 
-    .gameover {
-        width: 350px;
-        height: 175px;
-    }
+  .gameover {
+    width: 350px;
+    height: 175px;
+  }
 
-    .reset-btn {
-        width: 130px;
-        height: 40px;
-    }
+  .reset-btn {
+    width: 130px;
+    height: 40px;
+  }
 
-    .scoreboard {
-        gap: 100px;
-    }
+  .scoreboard {
+    gap: 100px;
+  }
 }
 
 @media (min-width: 900px) {
-    .square {
-        height: 135px;
-        width: 135px;
-    }
+  .square {
+    height: 135px;
+    width: 135px;
+  }
 
-    .form > input {
-        height: 30px;
-        width: 200px;
-    }
+  .form > input {
+    height: 30px;
+    width: 200px;
+  }
 
-    .gameover {
-        width: 450px;
-        height: 210px;
-    }
+  .gameover {
+    width: 450px;
+    height: 210px;
+  }
 
-    .reset-btn {
-        width: 140px;
-        height: 45px;
-    }
-    
-    .scoreboard {
-        gap: 150px;
-    }
+  .reset-btn {
+    width: 140px;
+    height: 45px;
+  }
+
+  .scoreboard {
+    gap: 150px;
+  }
 }
